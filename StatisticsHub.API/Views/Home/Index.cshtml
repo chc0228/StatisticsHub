@@ -1,0 +1,30 @@
+﻿<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">ASP.NET Web API</a></p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <ol id="teams"></ol>
+</div>
+
+@section scripts
+{
+    <script>
+        $.ajax({
+            url: '/api/teams',
+            success: function (teams) {
+                var list = $('#teams')
+                for (var i = 0; i < teams.length; i++) {
+                    var team = teams[i];
+                    list.append('<li>' + team.abbreviation + '</li>');
+                }
+            }
+
+
+        });
+
+    </script>
+}
