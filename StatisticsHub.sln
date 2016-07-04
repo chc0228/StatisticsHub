@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.IdentityServer", "Core.IdentityServer\Core.IdentityServer.csproj", "{8BA48D1D-7C11-4A0F-8624-F95423D0C7AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsHub.API", "StatisticsHub.API\StatisticsHub.API.csproj", "{F2141D17-7C44-4A5D-9B17-7D9A47CD8B5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BA48D1D-7C11-4A0F-8624-F95423D0C7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA48D1D-7C11-4A0F-8624-F95423D0C7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA48D1D-7C11-4A0F-8624-F95423D0C7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA48D1D-7C11-4A0F-8624-F95423D0C7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2141D17-7C44-4A5D-9B17-7D9A47CD8B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2141D17-7C44-4A5D-9B17-7D9A47CD8B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2141D17-7C44-4A5D-9B17-7D9A47CD8B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2141D17-7C44-4A5D-9B17-7D9A47CD8B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
