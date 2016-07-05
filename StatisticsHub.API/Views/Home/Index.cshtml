@@ -8,23 +8,101 @@
 </header>
 <div id="body">
     <ol id="teams"></ol>
+    <input id="inputSearch"style="margin-left: 10px;"/>
+    <button id="btnSearch">Find Team</button>
 </div>
 
 @section scripts
 {
     <script>
+        //$.ajax({
+        //    url: '/api/teams',
+        //    success: function (teams) {
+        //        var list = $('#teams')
+        //        for (var i = 0; i < teams.length; i++) {
+        //            var team = teams[i];
+        //            list.append('<li>' + team.abbreviation + '</li>');
+        //        }
+        //    }
+        //});
+
+        //Main OData query options
+        //$top
+        //$skip
+        //$orderby
+        //$filter eq ne gty ge lt le and or not (Example) Price lt 10
+        //$select
+
+        var swDivision = 'Southwest'.toUpperCase();
+        var texas = 'Texas'.toUpperCase();
+        var odataQuery = "api/teams"
+        + "?$select=City,State"
+        + "&$orderby=State"
+        + "&$top=5"
+        + "&$filter=substringof(toupper(Division), + '" + swDivision + "')"
+        + " or substringof(toupper(State), + '" + texas + "')";
+
+
+        $.ajax({
+            url: odataQuery,
+            success: odataQueryCallback
+        });
+
+        function odataQueryCallback(teams) {
+            var list = $('#teams');
+            list.empty();
+            for (var i = 0; i < teams.length; i++) {
+                var team = teams[i];
+                list.append('<li>' + team.city + ',' + team.state + '</li>');
+            }
+        }
+
+        var team = {
+            team_ID: "austin-reapers",
+            abbreviation: "AUS",
+            active: true,
+            first_name: "Austin",
+            last_name: "Reapers",
+            conference: "West",
+            division: "Southwest",
+            site_name: "Austin Center",
+            city: "Austin",
+            state: "Texas",
+            full_name: "Austin Reapers"
+        };
+
         $.ajax({
             url: '/api/teams',
-            success: function (teams) {
-                var list = $('#teams')
-                for (var i = 0; i < teams.length; i++) {
-                    var team = teams[i];
-                    list.append('<li>' + team.abbreviation + '</li>');
-                }
+            type: 'post',
+            dataType: 'json',
+            data: team,
+            success: function (team) {
+                var list = $('#teams');
+                list.empty();
+                list.append('<li>' + team.city + ',' + team.state + '</li>');
             }
-
 
         });
 
+        $(document).ready(function () {
+            $("#btnSearch").click(function () {
+                console.log("inside btnSearch click event");
+                var searchWord = $('#inputSearch').val();
+                
+                $.ajax({
+                    url: 'api/teams/?search=' + searchWord, 
+                    success: function (teams) {
+                        var list = $('#teams');
+                        list.empty();
+                        for (var i = 0; i < teams.length; i++) {
+                            var team = teams[i];
+                            list.append('<li>' + team.team_ID + '</li>');
+                        }
+                    }
+                });
+            });
+
+
+        });
     </script>
 }

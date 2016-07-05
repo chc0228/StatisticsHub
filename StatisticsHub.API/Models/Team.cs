@@ -7,6 +7,7 @@ namespace StatisticsHub.API.Models
 {
     public class Team
     {
+        public int ID { get; set; }
         public string Team_ID { get; set; }
         public string Abbreviation { get; set; }
         public bool Active{ get; set; }

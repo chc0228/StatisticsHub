@@ -21,12 +21,11 @@ namespace StatisticsHub.API
             return teams;
         }
 
-        //Update operation
         public Team Save(int id, Team team)
         {
             var teams = this.Retrieve();
 
-            var itemIndex = teams.FindIndex(t => t.Team_ID == team.Team_ID);
+            var itemIndex = teams.FindIndex(t => t.ID == team.ID);
 
             if (itemIndex > 0)
             {
@@ -36,6 +35,18 @@ namespace StatisticsHub.API
             {
                 return null;
             }
+
+            WriteData(teams);
+            return team;
+        }
+
+        public Team Save(Team team)
+        {
+            var teams = this.Retrieve();
+
+            var maxID = teams.Max(t => t.ID);
+            team.ID = maxID + 1;
+            teams.Add(team);
 
             WriteData(teams);
             return team;

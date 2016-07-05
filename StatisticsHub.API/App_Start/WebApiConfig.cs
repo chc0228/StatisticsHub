@@ -12,7 +12,7 @@ namespace StatisticsHub.API
         {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{id}/",
                 defaults: new { id = RouteParameter.Optional }
             );
 
@@ -21,6 +21,9 @@ namespace StatisticsHub.API
 
             //allows property on the client to be camelcase, lets turn this on since our dashboard will be in angular 2
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            //Enable attribute routing
+            //config.MapHttpAttributeRoutes();
         }
     }
 }
