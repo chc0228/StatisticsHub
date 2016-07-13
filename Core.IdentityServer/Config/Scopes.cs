@@ -14,9 +14,9 @@ namespace Core.IdentityServer.Config
             {
                 new Scope
                 {
-                    Name = "statisticsmanagement",
-                    DisplayName = "Statistics Management",
-                    Description = "Allow the applicationn to manage user-customized statistics on your behalf.",
+                    Name = "dashboardmanagement",
+                    DisplayName = "Dashboard Management",
+                    Description = "Allow the application to manage user-customized dashboard.",
                     Type = ScopeType.Resource
                 }
 

@@ -5,6 +5,7 @@ using System.Web;
 using Core.IdentityServer.Config;
 using IdentityServer3.Core.Configuration;
 using Owin;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Core.IdentityServer
 {
@@ -23,13 +24,19 @@ namespace Core.IdentityServer
                     {
                         Factory = idServerServiceFactory,
                         SiteName = "Statistics Hub Information Display Security Token Service",
-                        IssuerUri = ""
+                        IssuerUri = Core.StatisticsHub.Constants.StatisticsHubIssuerUri,
+                        PublicOrigin = Core.StatisticsHub.Constants.StatisticsHubSTSOrigin,
+                        SigningCertificate = LoadCertificate()
                     };
 
                     idserverApp.UseIdentityServer(options);
                 });
+        }
 
-
+        X509Certificate2 LoadCertificate()
+        {
+            return new X509Certificate2(
+                string.Format(@"{0}\certificates\idsrv3test.pfx", AppDomain.CurrentDomain.BaseDirectory), "idsrv3test");
         }
     }
 }

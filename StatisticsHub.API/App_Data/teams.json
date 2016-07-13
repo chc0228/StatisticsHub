@@ -418,19 +418,5 @@
     "City": "Washington",
     "State": "District of Columbia",
     "Full_Name": "Washington Wizards"
-  },
-  {
-    "ID": 31,
-    "Team_ID": "austin-reapers",
-    "Abbreviation": "AUS",
-    "Active": true,
-    "First_Name": "Austin",
-    "Last_Name": "Reapers",
-    "Conference": "West",
-    "Division": "Southwest",
-    "Site_Name": "Austin Center",
-    "City": "Austin",
-    "State": "Texas",
-    "Full_Name": "Austin Reapers"
   }
 ]
